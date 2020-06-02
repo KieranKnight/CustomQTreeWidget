@@ -33,8 +33,8 @@ using PySide2.
 
 The module provides an example dictionary that you may see
 in a professional environment. Typically, this data would be
-stored within a class object but the data had been laid out so
-it is easier to follow.
+stored within a class object but the data has been laid out so
+it is easier to follow along.
 
 To create your own "data" dictionary you will need another method or class
 that performs tasks and returns a dictionary. Doing this may require slight
@@ -75,17 +75,20 @@ class UI(QtWidgets.QMainWindow):
     _OBJ_NAME = 'CustomTreeWidget'
     def __init__(self, parent=None):
         super(UI, self).__init__(parent=parent)
-
+        # setting up the UI 
         self.setWindowTitle(self._OBJ_NAME)
         self.centralwidget = QtWidgets.QWidget(self)
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-    
+        # Creating the tree widget
         self.treeWidget = CustomTreeWidget(_data, parent=self.centralwidget)
         self.setCentralWidget(self.centralwidget)
+
+        # Creating an example button to show how the data can be used.
         self._show_data_useage_btn = QtWidgets.QPushButton()
         self._show_data_useage_btn.setText('Select a row and see the printed data!')
         self._show_data_useage_btn.clicked.connect(self.show_data_useage)
 
+        # adding the widgets to the layout
         self.verticalLayout.addWidget(self.treeWidget)
         self.verticalLayout.addWidget(self._show_data_useage_btn)
 
@@ -158,9 +161,7 @@ class CustomTreeWidget(QtWidgets.QTreeWidget):
     def data(self):
         return self._data
  
-# ------------------------------------------------------------------------------
-# Custom QTreeWidgetItem
-# ------------------------------------------------------------------------------
+
 class CustomTreeItem( QtWidgets.QTreeWidgetItem ):
     """
     Overriding the QTreeWidgetItem to work with widgets.
@@ -224,9 +225,6 @@ class CustomTreeItem( QtWidgets.QTreeWidgetItem ):
         return self._location_widget
 
 
-# ------------------------------------------------------------------------------
-# Open UI
-# ------------------------------------------------------------------------------
 def openUI():
     """
     Opening the UI and resizing the window
@@ -237,8 +235,6 @@ def openUI():
     ui.show()
     sys.exit(app.exec_())
 
-# ------------------------------------------------------------------------------
-# __name__
-# ------------------------------------------------------------------------------
+
 if __name__ == '__main__':
     openUI()
