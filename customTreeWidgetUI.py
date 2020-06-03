@@ -162,14 +162,14 @@ class CustomTreeWidget(QtWidgets.QTreeWidget):
         return self._data
  
 
-class CustomTreeItem( QtWidgets.QTreeWidgetItem ):
+class CustomTreeItem(QtWidgets.QTreeWidgetItem):
     """
     Overriding the QTreeWidgetItem to work with widgets.
 
     Arguments:
         QtWidgets {QTreeWidgetItem} -- Inheriting the base QTreeWidgetItem
     """
-    def __init__( self, name, top_item, parent=None):
+    def __init__(self, name, top_item, parent=None):
         """
         Buidling the widgets directly within the __init__ method
         so everytime the class is instantiated, the widgets will be built.
@@ -186,7 +186,7 @@ class CustomTreeItem( QtWidgets.QTreeWidgetItem ):
             This means that when querying the selected row.
             Please see the method; show_data_useage_btn()
         """
-        super( CustomTreeItem, self).__init__(parent)
+        super(CustomTreeItem, self).__init__(parent)
 
         ## Column 0 - Sequence:
         self._sequence_widget = QtWidgets.QLabel()
